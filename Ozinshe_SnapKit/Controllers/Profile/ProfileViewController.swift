@@ -10,6 +10,7 @@ import SnapKit
 
 class ProfileViewController: UIViewController {
 
+    let divider4 = SeparatorView()
     let settingVIew = UIView()
     let image = UIImageView()
     let nameLabel = UILabel()
@@ -96,7 +97,8 @@ class ProfileViewController: UIViewController {
     }
     
     func setupUI() {
-//        self.navigationItem.title = "Профиль"
+        self.navigationItem.title = "Профиль"
+        view.addSubview(divider4)
         view.addSubview(settingVIew)
         view.addSubview(image)
         view.addSubview(nameLabel)
@@ -118,9 +120,24 @@ class ProfileViewController: UIViewController {
         settingVIew.addSubview(dataLabel)
         settingVIew.addSubview(languageLabel)
         darkModeSwitch.addTarget(self, action: #selector(updateInterfaceStyle), for: .valueChanged)
+        data.addTarget(self, action: #selector(goToPersonalData), for: .touchUpInside)
+        changePassword.addTarget(self, action: #selector(changePasswordPage), for: .touchUpInside)
 
     }
+    @objc func goToPersonalData() {
+        let personalDataVC = PersonalDataViewController()
+        navigationController?.show(personalDataVC, sender: self)
+    }
+    
+    @objc func changePasswordPage() {
+        let changePasswordVC = ChangePasswordViewController()
+        navigationController?.show(changePasswordVC, sender: self)
+    }
     func setupConstraints() {
+        divider4.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
+            make.horizontalEdges.equalToSuperview()
+        }
         image.snp.makeConstraints { make in
             make.size.equalTo(104)
             make.top.equalToSuperview().inset(135)
@@ -218,8 +235,7 @@ class ProfileViewController: UIViewController {
     
     @objc private func updateInterfaceStyle() {
         view.window?.overrideUserInterfaceStyle = darkModeSwitch.isOn ? .dark : .light
-        settingVIew.backgroundColor = darkModeSwitch.isOn ? .black : .white
-        
+        settingVIew.backgroundColor = darkModeSwitch.isOn ? .black : UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
     }
 
     

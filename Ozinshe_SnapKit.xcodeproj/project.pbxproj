@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2CD6698D9FDABE8965A63CB7 /* Pods_Ozinshe_SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040CB2F0853D26743312D9EF /* Pods_Ozinshe_SnapKit.framework */; };
 		9506CECB2BC43851009865BB /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9506CECA2BC43850009865BB /* OnboardingViewController.swift */; };
+		9535C2DC2BCAA4F700DE8E80 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9535C2DB2BCAA4F700DE8E80 /* PersonalDataViewController.swift */; };
+		9535C2DE2BCAB19700DE8E80 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9535C2DD2BCAB19700DE8E80 /* ChangePasswordViewController.swift */; };
+		9535C2E12BCAB49100DE8E80 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9535C2E02BCAB49100DE8E80 /* TextFieldWithPadding.swift */; };
 		95AB69E72BC41FC200AF765E /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95AB69E32BC41FC200AF765E /* SF-Pro-Display-Semibold.otf */; };
 		95AB69E82BC41FC200AF765E /* SFProDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95AB69E42BC41FC200AF765E /* SFProDisplay-Bold.otf */; };
 		95AB69E92BC41FC200AF765E /* SFProDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95AB69E52BC41FC200AF765E /* SFProDisplay-Regular.otf */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		040CB2F0853D26743312D9EF /* Pods_Ozinshe_SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ozinshe_SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9506CECA2BC43850009865BB /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		9535C2DB2BCAA4F700DE8E80 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
+		9535C2DD2BCAB19700DE8E80 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		9535C2E02BCAB49100DE8E80 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		95AB69E32BC41FC200AF765E /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		95AB69E42BC41FC200AF765E /* SFProDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.otf"; sourceTree = "<group>"; };
 		95AB69E52BC41FC200AF765E /* SFProDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.otf"; sourceTree = "<group>"; };
@@ -60,6 +66,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9535C2DA2BCAA49100DE8E80 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				95E9F3472BC40BEE00AA900F /* ProfileViewController.swift */,
+				9535C2DB2BCAA4F700DE8E80 /* PersonalDataViewController.swift */,
+				9535C2DD2BCAB19700DE8E80 /* ChangePasswordViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		9535C2DF2BCAB46E00DE8E80 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9535C2E02BCAB49100DE8E80 /* TextFieldWithPadding.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		95AB69E62BC41FC200AF765E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +116,7 @@
 		95E9F3282BC406A600AA900F /* Ozinshe_SnapKit */ = {
 			isa = PBXGroup;
 			children = (
+				9535C2DF2BCAB46E00DE8E80 /* Extensions */,
 				95E9F33D2BC40A9D00AA900F /* Controllers */,
 				95E9F3292BC406A600AA900F /* AppDelegate.swift */,
 				95E9F32B2BC406A600AA900F /* SceneDelegate.swift */,
@@ -109,10 +134,10 @@
 		95E9F33D2BC40A9D00AA900F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9535C2DA2BCAA49100DE8E80 /* Profile */,
 				95E9F3402BC40BB700AA900F /* HomeViewController.swift */,
 				95E9F3422BC40BCA00AA900F /* SearchViewController.swift */,
 				95E9F3442BC40BD700AA900F /* FavoriteViewController.swift */,
-				95E9F3472BC40BEE00AA900F /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -253,12 +278,15 @@
 			files = (
 				95E9F3432BC40BCA00AA900F /* SearchViewController.swift in Sources */,
 				95E9F3412BC40BB700AA900F /* HomeViewController.swift in Sources */,
+				9535C2DC2BCAA4F700DE8E80 /* PersonalDataViewController.swift in Sources */,
 				95E9F34C2BC418BD00AA900F /* MovieTableViewCell.swift in Sources */,
+				9535C2E12BCAB49100DE8E80 /* TextFieldWithPadding.swift in Sources */,
 				95E9F32E2BC406A600AA900F /* ViewController.swift in Sources */,
 				95E9F3452BC40BD700AA900F /* FavoriteViewController.swift in Sources */,
 				95E9F33F2BC40B2F00AA900F /* TabBarController.swift in Sources */,
 				95E9F32A2BC406A600AA900F /* AppDelegate.swift in Sources */,
 				9506CECB2BC43851009865BB /* OnboardingViewController.swift in Sources */,
+				9535C2DE2BCAB19700DE8E80 /* ChangePasswordViewController.swift in Sources */,
 				95E9F3482BC40BEE00AA900F /* ProfileViewController.swift in Sources */,
 				95E9F32C2BC406A600AA900F /* SceneDelegate.swift in Sources */,
 			);
