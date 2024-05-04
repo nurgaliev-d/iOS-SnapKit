@@ -167,8 +167,8 @@ class ProfileViewController: UIViewController, LanguageProtocol {
         configureViews()
     }
     @objc func logOut() {
-       let onboardingVC = OnboardingViewController()
-        navigationController?.show(onboardingVC, sender: self)
+       let signInVC = SignInViewController()
+        navigationController?.show(signInVC, sender: self)
     }
     
     @objc func goToLanguagePage() {
@@ -194,7 +194,7 @@ class ProfileViewController: UIViewController, LanguageProtocol {
         }
         
         divider4.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalToSuperview()
         }
         image.snp.makeConstraints { make in

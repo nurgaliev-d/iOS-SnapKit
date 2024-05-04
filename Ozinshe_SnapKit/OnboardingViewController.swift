@@ -79,8 +79,8 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc func nextButtonTouched() {
-        let tabbarVC = TabBarController()
-        navigationController?.show(tabbarVC, sender: self)
+        let signInVC = SignInViewController()
+        navigationController?.show(signInVC, sender: self)
     }
     
 

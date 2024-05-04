@@ -26,7 +26,7 @@ class FavoriteViewController: UIViewController {
     }
     func setupUI() {
         view.addSubview(tableView)
-        
+        navigationItem.title = "Favorites"
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }

@@ -15,12 +15,11 @@ class TabBarController: UITabBarController {
         setupTabs()
         // Do any additional setup after loading the view.
     }
-    
     func setupTabs() {
-        let homeVC = HomeViewController()
-        let searchVC = SearchViewController()
-        let favoriteVC = FavoriteViewController()
-        let profileVC = ProfileViewController()
+        let homeVC = UINavigationController(rootViewController: HomeViewController())
+        let searchVC = UINavigationController(rootViewController: SearchViewController())
+        let favoriteVC = UINavigationController(rootViewController: FavoriteViewController())
+        let profileVC = UINavigationController(rootViewController: ProfileViewController())
         
         homeVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Home") , selectedImage: UIImage(named: "HomeSelected"))
         searchVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Search"), selectedImage: UIImage(named: "SearchSelected"))
