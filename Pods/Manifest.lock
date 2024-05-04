@@ -1,16 +1,25 @@
 PODS:
+  - Localize-Swift (3.2.0):
+    - Localize-Swift/LocalizeSwiftCore (= 3.2.0)
+    - Localize-Swift/UIKit (= 3.2.0)
+  - Localize-Swift/LocalizeSwiftCore (3.2.0)
+  - Localize-Swift/UIKit (3.2.0):
+    - Localize-Swift/LocalizeSwiftCore
   - SnapKit (5.7.1)
 
 DEPENDENCIES:
+  - Localize-Swift (~> 3.2)
   - SnapKit (~> 5.7.0)
 
 SPEC REPOS:
   trunk:
+    - Localize-Swift
     - SnapKit
 
 SPEC CHECKSUMS:
+  Localize-Swift: 6f4475136bdb0d7b2882ea3d4ea919d70142b232
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: 9d9bdc5287f4695723916aabbd8cc467535b3a2d
+PODFILE CHECKSUM: 7fc9c952c5b3d8e7ecd41dcb604006eee50cb1ff
 
 COCOAPODS: 1.13.0

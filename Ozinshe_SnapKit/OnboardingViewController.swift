@@ -10,24 +10,32 @@ import SnapKit
 
 class OnboardingViewController: UIViewController {
     
-   private lazy var collView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = .white
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(OnboardingCell.self, forCellWithReuseIdentifier: "Cell")
-        return collectionView
+    lazy var pgControl: UIPageControl = {
+        let control = UIPageControl()
+        control.currentPageIndicatorTintColor = UIColor(red: 179/255, green: 118/255, blue: 247/255, alpha: 1)
+        control.pageIndicatorTintColor = UIColor(red: 209/255, green: 213/255, blue: 219/255, alpha: 1)
+        control.numberOfPages = 3
+        control.isEnabled = true
+        
+        return control
     }()
     
-    private lazy var pgControl: UIPageControl = {
-        let control = UIPageControl()
-        control.currentPageIndicatorTintColor = UIColor(red: 209/255, green: 213/255, blue: 219/255, alpha: 1)
-        control.pageIndicatorTintColor = UIColor(red: 179/255, green: 118/255, blue: 247/255, alpha: 1)
-        return control
+    var currentPage = 0 {
+        didSet {
+            pgControl.currentPage = currentPage
+        }
+    }
+   private lazy var collView: UICollectionView = {
+       let layout = UICollectionViewFlowLayout()
+       layout.scrollDirection = .horizontal
+       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+       collectionView.isPagingEnabled = true
+       collectionView.showsHorizontalScrollIndicator = false
+       collectionView.backgroundColor = .systemBackground
+       collectionView.register(OnboardingCell.self, forCellWithReuseIdentifier: "Cell")
+       
+       
+        return collectionView
     }()
     
     private let arraySlides = [
@@ -36,39 +44,37 @@ class OnboardingViewController: UIViewController {
         ["thirdSlide", "ÖZINŞE-ге қош келдің!", "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз"]
     ]
     
-    private var currentPage = 0 {
-        didSet {
-            pgControl.currentPage = currentPage
-        }
-    }
-    
     override func viewDidLoad() {
+        collView.delegate = self
+        collView.dataSource = self
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        
         setupViews()
         setupConstraints()
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        print(pgControl.currentPage)
     }
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        navigationItem.title = " "
     }
     
     private func setupViews() {
-        view.addSubview(pgControl)
         view.addSubview(collView)
+        view.addSubview(pgControl)
     }
     
     private func setupConstraints() {
         collView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         pgControl.snp.makeConstraints { make in
-            make.centerX.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(551)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(551)
         }
     }
     
@@ -104,16 +110,13 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
         currentPage = Int(scrollView.contentOffset.x / width)
     }
 }
-//      MARK: Onoarding Cell
+//      MARK: Onoarding Cell-
 class OnboardingCell: UICollectionViewCell {
-    
-    
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()

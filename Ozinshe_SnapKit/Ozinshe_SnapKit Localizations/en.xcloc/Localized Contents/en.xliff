@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Ozinshe_SnapKit/en.lproj/Localizable (Kazakh).strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.3" build-num="15E204a"/>
+    </header>
+    <body>
+      <trans-unit id="CONNECTION_ERROR" xml:space="preserve">
+        <source>Қосылым қатесі</source>
+        <target>Қосылым қатесі</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="EDIT" xml:space="preserve">
+        <source>Өңдеу</source>
+        <target>Өңдеу</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="INFO" xml:space="preserve">
+        <source>Жеке деректер</source>
+        <target>Жеке деректер</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="LANGUAGE" xml:space="preserve">
+        <source>Тіл</source>
+        <target>Тіл</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="MY_PROFILE" xml:space="preserve">
+        <source>Менің профильім</source>
+        <target>Менің профильім</target>
+        <note>Localizable (Kazakh).strings
+  Ozinshe_SnapKit
+
+  Created by Диас Нургалиев on 15.04.2024.</note>
+      </trans-unit>
+      <trans-unit id="PASSWORD" xml:space="preserve">
+        <source>Құпия сөз</source>
+        <target>Құпия сөз</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="SWITCH" xml:space="preserve">
+        <source>Қараңғы режим</source>
+        <target>Қараңғы режим</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Ozinshe_SnapKit/en.lproj/Localizable (Russian).strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.3" build-num="15E204a"/>
+    </header>
+    <body>
+      <trans-unit id="CONNECTION_ERROR" xml:space="preserve">
+        <source>Ошибка соединения</source>
+        <target>Ошибка соединения</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="EDIT" xml:space="preserve">
+        <source>Редактировать</source>
+        <target>Редактировать</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="INFO" xml:space="preserve">
+        <source>Личные данные</source>
+        <target>Личные данные</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="LANGUAGE" xml:space="preserve">
+        <source>Язык</source>
+        <target>Язык</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="MY_PROFILE" xml:space="preserve">
+        <source>Мой профиль</source>
+        <target>Мой профиль</target>
+        <note>Localizable (Russian).strings
+  Ozinshe_SnapKit
+
+  Created by Диас Нургалиев on 15.04.2024.</note>
+      </trans-unit>
+      <trans-unit id="PASSWORD" xml:space="preserve">
+        <source>Пароль</source>
+        <target>Пароль</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="SWITCH" xml:space="preserve">
+        <source>Темная тема</source>
+        <target>Темная тема</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Ozinshe_SnapKit/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.3" build-num="15E204a"/>
+    </header>
+    <body>
+      <trans-unit id="CONNECTION_ERROR" xml:space="preserve">
+        <source>Connection error</source>
+        <target>Connection error</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="EDIT" xml:space="preserve">
+        <source>Edit</source>
+        <target>Edit</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="INFO" xml:space="preserve">
+        <source>Personal data</source>
+        <target>Personal data</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="LANGUAGE" xml:space="preserve">
+        <source>Language</source>
+        <target>Language</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="MY_PROFILE" xml:space="preserve">
+        <source>My profile</source>
+        <target>My profile</target>
+        <note>Localizable.strings
+  Ozinshe_SnapKit
+
+  Created by Диас Нургалиев on 15.04.2024.</note>
+      </trans-unit>
+      <trans-unit id="PASSWORD" xml:space="preserve">
+        <source>Password</source>
+        <target>Password</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="SWITCH" xml:space="preserve">
+        <source>Switch</source>
+        <target>Switch</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Ozinshe_SnapKit/InfoPlist.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.3" build-num="15E204a"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Ozinshe_SnapKit</source>
+        <target state="new">Ozinshe_SnapKit</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

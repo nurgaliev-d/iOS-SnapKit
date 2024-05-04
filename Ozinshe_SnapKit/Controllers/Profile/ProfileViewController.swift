@@ -7,8 +7,9 @@
 
 import UIKit
 import SnapKit
+import Localize_Swift
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, LanguageProtocol {
 
     let divider4 = SeparatorView()
     let settingVIew = UIView()
@@ -31,6 +32,16 @@ class ProfileViewController: UIViewController {
     let darkModeSwitch = UISwitch()
     let dataLabel = UILabel()
     let languageLabel = UILabel()
+    let logOutButton:UIButton = {
+        let logout = UIButton()
+        logout.setImage(UIImage(named: "logout"), for: .normal)
+        logout.snp.makeConstraints { make in
+            make.size.equalTo(24)
+        }
+        
+        
+        return logout
+    }()
     
     
     override func viewDidLoad() {
@@ -40,6 +51,10 @@ class ProfileViewController: UIViewController {
         setupConstraints()
         setupElem()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureViews()
     }
     func setupElem() {
         
@@ -103,6 +118,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(image)
         view.addSubview(nameLabel)
         view.addSubview(emailLabel)
+        view.addSubview(logOutButton)
         settingVIew.addSubview(data)
         settingVIew.addSubview(divider)
         settingVIew.addSubview(changePassword)
@@ -119,11 +135,49 @@ class ProfileViewController: UIViewController {
         settingVIew.addSubview(darkModeSwitch)
         settingVIew.addSubview(dataLabel)
         settingVIew.addSubview(languageLabel)
+        
         darkModeSwitch.addTarget(self, action: #selector(updateInterfaceStyle), for: .valueChanged)
         data.addTarget(self, action: #selector(goToPersonalData), for: .touchUpInside)
         changePassword.addTarget(self, action: #selector(changePasswordPage), for: .touchUpInside)
-
+        language.addTarget(self, action: #selector(goToLanguagePage), for: .touchUpInside)
+        logOutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
     }
+    
+    func configureViews(){
+        nameLabel.text = "MY_PROFILE".localized()
+        data.setTitle("INFO".localized(), for: .normal)
+        dataLabel.text = "EDIT".localized()
+        changePassword.setTitle("PASSWORD".localized(), for: .normal)
+        darkMode.setTitle("SWITCH".localized(), for: .normal)
+        language.setTitle("LANGUAGE".localized(), for: .normal)
+        
+        if Localize.currentLanguage() == "en"{
+            languageLabel.text = "English"
+        }
+        if Localize.currentLanguage() == "kk"{
+            languageLabel.text = "Қазақша"
+        }
+        if Localize.currentLanguage() == "ru"{
+            languageLabel.text = "Русский"
+        }
+    }
+    
+    
+    func languageDidChange() {
+        configureViews()
+    }
+    @objc func logOut() {
+       let onboardingVC = OnboardingViewController()
+        navigationController?.show(onboardingVC, sender: self)
+    }
+    
+    @objc func goToLanguagePage() {
+        let languageVC = LanguageViewController()
+        languageVC.modalPresentationStyle = .overFullScreen
+        languageVC.delegate = self
+        present(languageVC, animated: true, completion: nil)
+    }
+    
     @objc func goToPersonalData() {
         let personalDataVC = PersonalDataViewController()
         navigationController?.show(personalDataVC, sender: self)
@@ -134,6 +188,11 @@ class ProfileViewController: UIViewController {
         navigationController?.show(changePasswordVC, sender: self)
     }
     func setupConstraints() {
+        logOutButton.snp.makeConstraints { make in
+            make.bottom.equalTo(divider4.snp.top).offset(-8)
+            make.right.equalToSuperview().inset(24)
+        }
+        
         divider4.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(0)
             make.horizontalEdges.equalToSuperview()

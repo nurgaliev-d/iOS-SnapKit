@@ -1,0 +1,15 @@
+/*
+  Localizable.strings
+  Ozinshe_SnapKit
+
+  Created by Диас Нургалиев on 04.05.2024.
+  
+*/
+
+"MY_PROFILE" = "Мой профиль";
+"LANGUAGE" = "Язык";
+"PASSWORD" = "Пароль";
+"INFO" = "Личные данные";
+"EDIT" = "Редактировать";
+"SWITCH" = "Темная тема";
+"CONNECTION_ERROR" = "Ошибка соединения";

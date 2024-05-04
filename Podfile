@@ -7,4 +7,5 @@ target 'Ozinshe_SnapKit' do
 
   # Pods for Ozinshe_SnapKit
   pod 'SnapKit', '~> 5.7.0'
+  pod 'Localize-Swift', '~> 3.2'
 end
