@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class FavoriteViewController: UIViewController {
+    let divider = SeparatorView()
+    
     lazy var tableView: UITableView = {
         let tv = UITableView()
         
@@ -26,9 +28,15 @@ class FavoriteViewController: UIViewController {
     }
     func setupUI() {
         view.addSubview(tableView)
+        view.addSubview(divider)
         navigationItem.title = "Favorites"
+        divider.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
+        }
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview().inset(24)
         }
     }
 }

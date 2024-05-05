@@ -6,10 +6,11 @@
  
  */
 
- "MY_PROFILE" = "Менің профильім";
- "LANGUAGE" = "Тіл";
- "PASSWORD" = "Құпия сөз";
- "INFO" = "Жеке деректер";
- "EDIT" = "Өңдеу";
- "SWITCH" = "Қараңғы режим";
- "CONNECTION_ERROR" = "Қосылым қатесі";
+"MY_PROFILE" = "Менің профильім";
+"LANGUAGE" = "Тіл";
+"PASSWORD" = "Құпия сөз";
+"INFO" = "Жеке деректер";
+"EDIT" = "Өңдеу";
+"SWITCH" = "Қараңғы режим";
+"CONNECTION_ERROR" = "Қосылым қатесі";
+"PROFILE" = "Профиль";

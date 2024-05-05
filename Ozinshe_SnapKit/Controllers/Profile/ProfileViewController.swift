@@ -112,13 +112,13 @@ class ProfileViewController: UIViewController, LanguageProtocol {
     }
     
     func setupUI() {
-        self.navigationItem.title = "Профиль"
+        self.navigationItem.title = "PROFILE".localized()
         view.addSubview(divider4)
         view.addSubview(settingVIew)
         view.addSubview(image)
         view.addSubview(nameLabel)
         view.addSubview(emailLabel)
-        view.addSubview(logOutButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logOutButton)
         settingVIew.addSubview(data)
         settingVIew.addSubview(divider)
         settingVIew.addSubview(changePassword)
@@ -167,8 +167,9 @@ class ProfileViewController: UIViewController, LanguageProtocol {
         configureViews()
     }
     @objc func logOut() {
-       let signInVC = SignInViewController()
-        navigationController?.show(signInVC, sender: self)
+        let logoutPage = LogOutViewController()
+        logoutPage.modalPresentationStyle = .overFullScreen
+        present(logoutPage, animated: true, completion: nil)
     }
     
     @objc func goToLanguagePage() {
@@ -188,10 +189,10 @@ class ProfileViewController: UIViewController, LanguageProtocol {
         navigationController?.show(changePasswordVC, sender: self)
     }
     func setupConstraints() {
-        logOutButton.snp.makeConstraints { make in
-            make.bottom.equalTo(divider4.snp.top).offset(-8)
-            make.right.equalToSuperview().inset(24)
-        }
+//        logOutButton.snp.makeConstraints { make in
+//            make.bottom.equalTo(divider4.snp.top).offset(-8)
+//            make.right.equalToSuperview().inset(24)
+//        }
         
         divider4.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)

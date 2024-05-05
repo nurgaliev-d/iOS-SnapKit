@@ -83,7 +83,7 @@ class MovieTableViewCell: UITableViewCell {
         
         posterImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(24)
-            make.left.equalToSuperview().inset(24)
+            make.left.equalToSuperview()
             make.height.equalTo(104)
             make.width.equalTo(71)
         }

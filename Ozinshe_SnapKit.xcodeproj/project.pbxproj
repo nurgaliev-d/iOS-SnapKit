@@ -41,7 +41,7 @@
 		9514F30C2BCD6078005367ED /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		9514F30E2BCD6086005367ED /* LogOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutViewController.swift; sourceTree = "<group>"; };
 		9514F3102BCD693B005367ED /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewCell.swift; sourceTree = "<group>"; };
-		952732182BE65ACB0045DB09 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Ozinshe_SnapKit/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		952732182BE65ACB0045DB09 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9535C2DB2BCAA4F700DE8E80 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		9535C2DD2BCAB19700DE8E80 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		9535C2E02BCAB49100DE8E80 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 		95E9F31D2BC406A600AA900F = {
 			isa = PBXGroup;
 			children = (
-				952732182BE65ACB0045DB09 /* Launch Screen.storyboard */,
 				95E9F3282BC406A600AA900F /* Ozinshe_SnapKit */,
 				95E9F3272BC406A600AA900F /* Products */,
 				D7BF0F4BC4E8B803AB9A3EE0 /* Pods */,
@@ -143,6 +142,7 @@
 		95E9F3282BC406A600AA900F /* Ozinshe_SnapKit */ = {
 			isa = PBXGroup;
 			children = (
+				952732182BE65ACB0045DB09 /* Launch Screen.storyboard */,
 				959A84512BE6B1C60038D972 /* Static */,
 				95AB69E62BC41FC200AF765E /* Fonts */,
 				9535C2DF2BCAB46E00DE8E80 /* Extensions */,

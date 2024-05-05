@@ -13,24 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            
-            // Create the window
-            window = UIWindow(frame: UIScreen.main.bounds)
-            
-            // Create the root view controller
-            let onboardingViewController = OnboardingViewController()
-            
-            // Create the navigation controller and set its root view controller
-            let navigationController = UINavigationController(rootViewController: onboardingViewController)
-            
-            // Set the navigation controller as the root view controller of the window
-            window?.rootViewController = navigationController
-            
-            // Make the window visible
-            window?.makeKeyAndVisible()
-            
-            return true
-        }
+        // Override point for customization after application launch.
+        return true
+    }
 
     // MARK: UISceneSession Lifecycle
 

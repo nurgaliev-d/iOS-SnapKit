@@ -71,8 +71,8 @@ class SignInViewController: UIViewController{
             textField.layer.cornerRadius = 12
             textField.clipsToBounds = true
             textField.layer.borderColor = UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.0).cgColor
-            textField.addTarget(self, action: #selector(reEditingDidBegin), for: .editingDidBegin)
-            textField.addTarget(self, action: #selector(reEditingDidEnd), for: .editingDidEnd)
+            textField.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
+            textField.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
             
             
             
@@ -97,7 +97,7 @@ class SignInViewController: UIViewController{
             let button  = UIButton(type: .system)
             button.isSelected = false
             button.setImage(UIImage(named: "Showpassword"), for: .normal)
-            button.addTarget(self, action: #selector(reShowPassword), for: .touchUpInside)
+            button.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
             
             return button
         }()
@@ -178,16 +178,6 @@ class SignInViewController: UIViewController{
         @objc func showPassword() {
             emailTextField.isSecureTextEntry.toggle()
             }
-        @objc func reEditingDidBegin(_ textField: TextFIeldWithPadding) {
-            passwordTextField.layer.borderColor = UIColor(red: 0.59, green: 0.33, blue: 0.94, alpha: 1.00).cgColor
-            }
-
-        @objc func reEditingDidEnd(_ textField: TextFIeldWithPadding) {
-            passwordTextField.layer.borderColor = UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.00).cgColor
-            }
-        @objc func reShowPassword() {
-            passwordTextField.isSecureTextEntry.toggle()
-            }
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -230,7 +220,6 @@ class SignInViewController: UIViewController{
             print("JSON: \(json)")
             
             if let token = json["accessToken"].string {
-                print(token)
                 Storage.sharedInstance.accessToken = token
                 UserDefaults.standard.set(token, forKey: "accessToken")
                 self.startApp()
