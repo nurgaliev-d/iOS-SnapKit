@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class Storage {
-    public var accessToken: String = ""
-    static let sharedInstance = Storage()
+    public static let sharedInstance = Storage()
+
+    public var accessToken = ""
+    public var userEmail = ""
 }

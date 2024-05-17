@@ -99,9 +99,6 @@ class ProfileViewController: UIViewController, LanguageProtocol {
         darkMode.contentHorizontalAlignment = .leading
         darkMode.titleLabel?.font = UIFont(name: "SFProDisplay-Regular", size: 16)
         
-//        notificationSwitch.isOn = false
-//        darkModeSwitch.isOn = false
-        
         dataLabel.text = "Өңдеу"
         dataLabel.textColor = UIColor(red: 0.61, green: 0.64, blue: 0.69, alpha: 1.00)
         dataLabel.font = UIFont(name: "SFProDisplay-Regular", size: 12)

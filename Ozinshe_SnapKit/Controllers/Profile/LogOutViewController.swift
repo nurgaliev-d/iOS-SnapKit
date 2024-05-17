@@ -120,9 +120,12 @@ class LogOutViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func logout(_ sender: Any) {
             UserDefaults.standard.removeObject(forKey: "accessToken")
             let rootVC = SignInViewController()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = rootVC
-            appDelegate.window?.makeKeyAndVisible()
+            let navigationVC = UINavigationController(rootViewController: rootVC)
+        if let window = view.window {
+            UIView.transition(with: window, duration: 1.0, options: .transitionFlipFromLeft) {
+                window.rootViewController = navigationVC
+            }
+        }
     }
     @objc func cancel(_ sender: Any) {
         dismissView()

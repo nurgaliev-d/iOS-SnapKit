@@ -40,8 +40,9 @@ class SignInViewController: UIViewController{
             return label
         }()
         
-        let emailTextField: TextFIeldWithPadding = {
+        lazy var emailTextField: TextFIeldWithPadding = {
             let textField = TextFIeldWithPadding()
+            textField.autocapitalizationType = .none
             textField.placeholder = "Сіздің email"
             textField.font = UIFont(name: "SFProDisplay-Regular", size: 16)
             textField.borderStyle = .none
@@ -51,16 +52,16 @@ class SignInViewController: UIViewController{
             textField.layer.cornerRadius = 12
             textField.clipsToBounds = true
             textField.layer.borderColor = UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.0).cgColor
-            textField.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
-            textField.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
+            textField.delegate = self
             
             
             
             return textField
         }()
         
-        let passwordTextField: TextFIeldWithPadding = {
+        lazy var passwordTextField: TextFIeldWithPadding = {
             let textField = TextFIeldWithPadding()
+            textField.autocapitalizationType = .none
             textField.placeholder = "Сіздің құпия сөзіңіз"
             textField.font = UIFont(name: "SFProDisplay-Regular", size: 16)
             textField.borderStyle = .none
@@ -71,8 +72,7 @@ class SignInViewController: UIViewController{
             textField.layer.cornerRadius = 12
             textField.clipsToBounds = true
             textField.layer.borderColor = UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.0).cgColor
-            textField.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
-            textField.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
+            textField.delegate = self
             
             
             
@@ -93,7 +93,7 @@ class SignInViewController: UIViewController{
             
             return image
         }()
-        let showPasswordButton: UIButton = {
+        lazy var showPasswordButton: UIButton = {
             let button  = UIButton(type: .system)
             button.isSelected = false
             button.setImage(UIImage(named: "Showpassword"), for: .normal)
@@ -176,7 +176,7 @@ class SignInViewController: UIViewController{
             emailTextField.layer.borderColor = UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.00).cgColor
             }
         @objc func showPassword() {
-            emailTextField.isSecureTextEntry.toggle()
+            passwordTextField.isSecureTextEntry.toggle()
             }
         
         override func viewDidLoad() {
@@ -194,56 +194,62 @@ class SignInViewController: UIViewController{
     
     
     @objc func signIn() {
+        // credentials
         let email = emailTextField.text!
         let password = passwordTextField.text!
-    
-        if email.isEmpty || password.isEmpty {
-            return
-        }
-    
-    SVProgressHUD.show()
-    
-    let parameters = ["email": email,
-                      "password": password]
-    
-    AF.request(Urls.SIGN_IN_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
         
-        SVProgressHUD.dismiss()
-        var resultString = ""
-        if let data = response.data {
-            resultString = String(data: data, encoding: .utf8)!
-            print(resultString)
-        }
+        // validation
+        if email.isEmpty || password.isEmpty { return }
         
-        if response.response?.statusCode == 200 {
-            let json = JSON(response.data!)
-            print("JSON: \(json)")
+        // request to API
+        SVProgressHUD.show()
+        
+        let parameters = [
+            "email": email,
+            "password": password
+        ]
+        
+        AF.request("http://api.ozinshe.com/auth/V1/signin", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { result in
+            SVProgressHUD.dismiss()
             
-            if let token = json["accessToken"].string {
-                Storage.sharedInstance.accessToken = token
-                UserDefaults.standard.set(token, forKey: "accessToken")
-                self.startApp()
-            } else {
-                SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
+            // check response body
+            if let data = result.data {
+                let json = JSON(data)
+                
+                if let accessToken = json["accessToken"].string,
+                   let userEmail = json["email"].string {
+                    Storage.sharedInstance.accessToken = accessToken
+                    Storage.sharedInstance.userEmail = userEmail
+                    
+                    UserDefaults.standard.set(accessToken, forKey: "accessToken")
+                    UserDefaults.standard.set(userEmail, forKey: "userEmail")
+                    
+                    self.startApp()
+                    
+                    return
+                }
             }
-        } else {
-            var ErrorString = "CONNECTION_ERROR".localized()
-            if let sCode = response.response?.statusCode {
-                ErrorString = ErrorString + " \(sCode)"
+            
+            // 401
+            if result.response?.statusCode == 401 {
+                SVProgressHUD.showError(withStatus: "Неправильный email или пароль!")
+                return
             }
-            ErrorString = ErrorString + " \(resultString)"
-            SVProgressHUD.showError(withStatus: "\(ErrorString)")
+            
+            // any unexpected error
+            SVProgressHUD.showError(withStatus: String(data: result.data ?? Data(), encoding: .utf8))
         }
     }
-}
     func startApp(){
         let tabViewController = TabBarController()
-        tabViewController.modalPresentationStyle = .fullScreen
-        self.present(tabViewController, animated: true, completion: nil)
+        if let window = view.window {
+            UIView.transition(with: window, duration: 1.0, options: .transitionFlipFromLeft) {
+                window.rootViewController = tabViewController
+            }
+        }
     }
     //MARK: SetpuUI -
         func setupUI() {
-//            navigationItem.title = " "
             view.addSubview(welcomeLabel)
             view.addSubview(loginAccountLabel)
             view.addSubview(emailLabel)
@@ -346,3 +352,14 @@ class SignInViewController: UIViewController{
         */
 
     }
+
+extension SignInViewController: UITextFieldDelegate {
+    internal func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderColor = UIColor(red: 0.59, green: 0.33, blue: 0.94, alpha: 1.00).cgColor
+        }
+
+    internal func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderColor = UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.00).cgColor
+        }
+}
+
