@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,25 +22,29 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="EOo-FS-JdY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="b8v-Tq-ulQ">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-5r-4Y4">
-                                <rect key="frame" x="139.66666666666666" y="410.66666666666669" width="114" height="31"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3e4-Vj-Yv5">
+                                <rect key="frame" x="138" y="410.66666666666669" width="117" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="WQm-OS-PB2"/>
+                                    <constraint firstAttribute="height" constant="31" id="nUV-1k-KJV"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="EOo-FS-JdY" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Fyi-bS-Jfs"/>
-                            <constraint firstItem="EOo-FS-JdY" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="G2j-Gr-y4F"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="EOo-FS-JdY" secondAttribute="trailing" id="Pu9-fO-a5i"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="b8v-Tq-ulQ" secondAttribute="trailing" id="BOe-WL-ulJ"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="SfN-ll-jLj"/>
+                            <constraint firstItem="3e4-Vj-Yv5" firstAttribute="centerX" secondItem="b8v-Tq-ulQ" secondAttribute="centerX" id="UJV-07-quO"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstAttribute="bottom" secondItem="EOo-FS-JdY" secondAttribute="bottom" id="ao2-v5-6I0"/>
-                            <constraint firstItem="0NE-5r-4Y4" firstAttribute="centerY" secondItem="EOo-FS-JdY" secondAttribute="centerY" id="ujm-lZ-et6"/>
-                            <constraint firstItem="0NE-5r-4Y4" firstAttribute="centerX" secondItem="EOo-FS-JdY" secondAttribute="centerX" id="zWp-3S-zU7"/>
+                            <constraint firstItem="3e4-Vj-Yv5" firstAttribute="centerY" secondItem="b8v-Tq-ulQ" secondAttribute="centerY" id="hXs-Xf-VuH"/>
+                            <constraint firstItem="b8v-Tq-ulQ" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="iuR-5M-3IR"/>
+                            <constraint firstAttribute="bottom" secondItem="b8v-Tq-ulQ" secondAttribute="bottom" id="xNK-gt-jAx"/>
+                            <constraint firstItem="b8v-Tq-ulQ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="xNo-pe-ud9"/>
                         </constraints>
                     </view>
                 </viewController>

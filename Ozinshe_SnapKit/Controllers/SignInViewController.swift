@@ -138,12 +138,13 @@ class SignInViewController: UIViewController{
         
         return label
     }()
-    let createAccountButton: UIButton = {
+    lazy var createAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Тіркелу", for: .normal)
         button.setTitleColor(UIColor(red: 0.70, green: 0.46, blue: 0.97, alpha: 1.00), for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 14)
         button.contentHorizontalAlignment = .left
+        button.addTarget(self, action: #selector(createPage), for: .touchUpInside)
         
         return button
     }()
@@ -192,54 +193,54 @@ class SignInViewController: UIViewController{
             emailTextField.layer.borderColor = emailTextField.isEditing ? UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.0).cgColor : UIColor(red: 0.90, green: 0.92, blue: 0.94, alpha: 1.0).cgColor
         }
     
+    @objc func createPage() {
+        let createPage = CreateAccountViewController()
+        navigationController?.show(createPage, sender: self)
+    }
     
     @objc func signIn() {
-        // credentials
         let email = emailTextField.text!
         let password = passwordTextField.text!
+    
+        if email.isEmpty || password.isEmpty {
+            return
+        }
+    
+    SVProgressHUD.show()
+    
+    let parameters = ["email": email,
+                      "password": password]
+    
+    AF.request(Urls.SIGN_IN_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
         
-        // validation
-        if email.isEmpty || password.isEmpty { return }
+        SVProgressHUD.dismiss()
+        var resultString = ""
+        if let data = response.data {
+            resultString = String(data: data, encoding: .utf8)!
+            print(resultString)
+        }
         
-        // request to API
-        SVProgressHUD.show()
-        
-        let parameters = [
-            "email": email,
-            "password": password
-        ]
-        
-        AF.request("http://api.ozinshe.com/auth/V1/signin", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { result in
-            SVProgressHUD.dismiss()
+        if response.response?.statusCode == 200 {
+            let json = JSON(response.data!)
+            print("JSON: \(json)")
             
-            // check response body
-            if let data = result.data {
-                let json = JSON(data)
-                
-                if let accessToken = json["accessToken"].string,
-                   let userEmail = json["email"].string {
-                    Storage.sharedInstance.accessToken = accessToken
-                    Storage.sharedInstance.userEmail = userEmail
-                    
-                    UserDefaults.standard.set(accessToken, forKey: "accessToken")
-                    UserDefaults.standard.set(userEmail, forKey: "userEmail")
-                    
-                    self.startApp()
-                    
-                    return
-                }
+            if let token = json["accessToken"].string {
+                Storage.sharedInstance.accessToken = token
+                UserDefaults.standard.set(token, forKey: "accessToken")
+                self.startApp()
+            } else {
+                SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
             }
-            
-            // 401
-            if result.response?.statusCode == 401 {
-                SVProgressHUD.showError(withStatus: "Неправильный email или пароль!")
-                return
+        } else {
+            var ErrorString = "CONNECTION_ERROR".localized()
+            if let sCode = response.response?.statusCode {
+                ErrorString = ErrorString + " \(sCode)"
             }
-            
-            // any unexpected error
-            SVProgressHUD.showError(withStatus: String(data: result.data ?? Data(), encoding: .utf8))
+            ErrorString = ErrorString + " \(resultString)"
+            SVProgressHUD.showError(withStatus: "\(ErrorString)")
         }
     }
+}
     func startApp(){
         let tabViewController = TabBarController()
         if let window = view.window {

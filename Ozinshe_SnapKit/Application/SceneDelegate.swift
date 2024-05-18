@@ -10,11 +10,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         configureNavBar()
 
-//        if let accessToken = UserDefaults.standard.string(forKey: "accessToken"),
-//           let userEmail = UserDefaults.standard.string(forKey: "userEmail") {
+//        if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
 //            Storage.sharedInstance.accessToken = accessToken
-//            Storage.sharedInstance.userEmail = userEmail
-//            
+//
 //            let window = UIWindow(windowScene: windowScene)
 //            
 //            let tabBarController = TabBarController()
